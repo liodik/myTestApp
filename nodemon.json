@@ -2,6 +2,8 @@
   "env": {
     "MONGO_USER": "liodik",
     "MONGO_PASSWORD": "0Ae3e3",
-    "MONGO_DB": "myApp"
+    "MONGO_DB": "myApp",
+    "TELEGRAM_API_ID": 24702215,
+    "TELEGRAM_API_HASH": "5f467f4cda39d56d16de68775292f6af"
   }
 }

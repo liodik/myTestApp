@@ -5,6 +5,9 @@ const helmet = require("helmet");
 const compression = require("compression");
 
 const authRoutes = require("./routes/auth");
+const usersRoutes = require("./routes/users");
+const telegramRoutes = require("./routes/telegram");
+
 
 const app = express();
 app.use(helmet());
@@ -24,7 +27,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/auth", authRoutes);
+app.use("/api/v1/auth", authRoutes);
+
+app.use("/api/v1/users", usersRoutes);
+
+app.use("/api/v1/telegram/", telegramRoutes);
+
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -39,5 +47,5 @@ mongoose
   .connect(
     `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.nxloz2t.mongodb.net/${process.env.MONGO_DB}`
   )
-  .then((res) => app.listen(process.env.PORT || 3000))
+  .then((res) => app.listen(process.env.PORT || 8080))
   .catch((err) => console.log(err));
